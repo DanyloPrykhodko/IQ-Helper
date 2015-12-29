@@ -14,9 +14,26 @@
 
 @implementation ViewController
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textFieldProfit resignFirstResponder];
+    [textFieldBalance resignFirstResponder];
+    [textFieldAmount resignFirstResponder];
+    return YES;
+}
+
+
+    
 - (void)viewDidLoad {
+    [self setNeedsStatusBarAppearanceUpdate];
+    textFieldProfit.delegate = self;
+    textFieldBalance.delegate = self;
+    textFieldAmount.delegate = self;
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [textFieldProfit setFont:[UIFont fontWithName:@"Roboto-Light" size:94]];
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {

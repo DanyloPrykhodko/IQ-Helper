@@ -16,6 +16,18 @@
 		CB3812A71C328DF30016397C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB3812A51C328DF30016397C /* LaunchScreen.storyboard */; };
 		CB3812B21C328DF30016397C /* IQ_Option_HelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3812B11C328DF30016397C /* IQ_Option_HelperTests.m */; };
 		CB3812BD1C328DF30016397C /* IQ_Option_HelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3812BC1C328DF30016397C /* IQ_Option_HelperUITests.m */; };
+		CB3812D31C328E150016397C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CA1C328E150016397C /* Roboto-Bold.ttf */; };
+		CB3812D41C328E150016397C /* LOSE.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CB1C328E150016397C /* LOSE.png */; };
+		CB3812D61C328E150016397C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CD1C328E150016397C /* Roboto-Light.ttf */; };
+		CB3812D81C328E150016397C /* WIN.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CF1C328E150016397C /* WIN.png */; };
+		CB3812D91C328E150016397C /* IQOH.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812D01C328E150016397C /* IQOH.png */; };
+		CB3812DA1C328E150016397C /* IQOHPlan.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812D11C328E150016397C /* IQOHPlan.png */; };
+		CB3812E01C3292130016397C /* –.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DC1C3292130016397C /* –.png */; };
+		CB3812E11C3292130016397C /* IQOHIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DD1C3292130016397C /* IQOHIntro.png */; };
+		CB3812E21C3292130016397C /* IQOHBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DE1C3292130016397C /* IQOHBack.png */; };
+		CB3812E31C3292130016397C /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DF1C3292130016397C /* +.png */; };
+		CB3812E61C32921F0016397C /* IQOHIco120.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812E41C32921F0016397C /* IQOHIco120.png */; };
+		CB3812E71C32921F0016397C /* IQOHIco180.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812E51C32921F0016397C /* IQOHIco180.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CB3812911C328DF30016397C /* IQ Option Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IQ Option Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB3812911C328DF30016397C /* IQO Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IQO Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3812951C328DF30016397C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CB3812971C328DF30016397C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB3812981C328DF30016397C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +65,18 @@
 		CB3812B81C328DF30016397C /* IQ Option HelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IQ Option HelperUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3812BC1C328DF30016397C /* IQ_Option_HelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQ_Option_HelperUITests.m; sourceTree = "<group>"; };
 		CB3812BE1C328DF30016397C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB3812CA1C328E150016397C /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		CB3812CB1C328E150016397C /* LOSE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOSE.png; sourceTree = "<group>"; };
+		CB3812CD1C328E150016397C /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		CB3812CF1C328E150016397C /* WIN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WIN.png; sourceTree = "<group>"; };
+		CB3812D01C328E150016397C /* IQOH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOH.png; sourceTree = "<group>"; };
+		CB3812D11C328E150016397C /* IQOHPlan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHPlan.png; sourceTree = "<group>"; };
+		CB3812DC1C3292130016397C /* –.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "–.png"; sourceTree = "<group>"; };
+		CB3812DD1C3292130016397C /* IQOHIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHIntro.png; sourceTree = "<group>"; };
+		CB3812DE1C3292130016397C /* IQOHBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHBack.png; sourceTree = "<group>"; };
+		CB3812DF1C3292130016397C /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
+		CB3812E41C32921F0016397C /* IQOHIco120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHIco120.png; sourceTree = "<group>"; };
+		CB3812E51C32921F0016397C /* IQOHIco180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHIco180.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +117,7 @@
 		CB3812921C328DF30016397C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB3812911C328DF30016397C /* IQ Option Helper.app */,
+				CB3812911C328DF30016397C /* IQO Helper.app */,
 				CB3812AD1C328DF30016397C /* IQ Option HelperTests.xctest */,
 				CB3812B81C328DF30016397C /* IQ Option HelperUITests.xctest */,
 			);
@@ -120,7 +144,19 @@
 		CB3812941C328DF30016397C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB3812E41C32921F0016397C /* IQOHIco120.png */,
+				CB3812E51C32921F0016397C /* IQOHIco180.png */,
 				CB3812951C328DF30016397C /* main.m */,
+				CB3812DD1C3292130016397C /* IQOHIntro.png */,
+				CB3812CA1C328E150016397C /* Roboto-Bold.ttf */,
+				CB3812CD1C328E150016397C /* Roboto-Light.ttf */,
+				CB3812DE1C3292130016397C /* IQOHBack.png */,
+				CB3812D01C328E150016397C /* IQOH.png */,
+				CB3812CB1C328E150016397C /* LOSE.png */,
+				CB3812CF1C328E150016397C /* WIN.png */,
+				CB3812DC1C3292130016397C /* –.png */,
+				CB3812DF1C3292130016397C /* +.png */,
+				CB3812D11C328E150016397C /* IQOHPlan.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,7 +196,7 @@
 			);
 			name = "IQ Option Helper";
 			productName = "IQ Option Helper";
-			productReference = CB3812911C328DF30016397C /* IQ Option Helper.app */;
+			productReference = CB3812911C328DF30016397C /* IQO Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CB3812AC1C328DF30016397C /* IQ Option HelperTests */ = {
@@ -249,9 +285,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3812E71C32921F0016397C /* IQOHIco180.png in Resources */,
 				CB3812A71C328DF30016397C /* LaunchScreen.storyboard in Resources */,
+				CB3812E21C3292130016397C /* IQOHBack.png in Resources */,
 				CB3812A41C328DF30016397C /* Assets.xcassets in Resources */,
+				CB3812D91C328E150016397C /* IQOH.png in Resources */,
+				CB3812E01C3292130016397C /* –.png in Resources */,
+				CB3812D41C328E150016397C /* LOSE.png in Resources */,
+				CB3812D81C328E150016397C /* WIN.png in Resources */,
+				CB3812E11C3292130016397C /* IQOHIntro.png in Resources */,
+				CB3812E61C32921F0016397C /* IQOHIco120.png in Resources */,
+				CB3812D61C328E150016397C /* Roboto-Light.ttf in Resources */,
+				CB3812E31C3292130016397C /* +.png in Resources */,
+				CB3812D31C328E150016397C /* Roboto-Bold.ttf in Resources */,
 				CB38129F1C328DF30016397C /* Main.storyboard in Resources */,
+				CB3812DA1C328E150016397C /* IQOHPlan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +469,7 @@
 				INFOPLIST_FILE = "IQ Option Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dr.IQ-Option-Helper";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "IQO Helper";
 			};
 			name = Debug;
 		};
@@ -432,7 +480,7 @@
 				INFOPLIST_FILE = "IQ Option Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dr.IQ-Option-Helper";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "IQO Helper";
 			};
 			name = Release;
 		};
