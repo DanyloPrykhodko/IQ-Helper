@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @end
 
@@ -39,6 +39,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)textFieldBalanceEditingChanged:(id)sender {
+}
+- (IBAction)textFieldAmountEditingChanged:(id)sender {
+}
+- (IBAction)textFieldProfitEditingChanged:(id)sender {
 }
 
 @end

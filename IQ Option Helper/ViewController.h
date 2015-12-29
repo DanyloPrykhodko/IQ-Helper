@@ -12,8 +12,10 @@
     IBOutlet UITextField * textFieldProfit;
     IBOutlet UITextField * textFieldBalance;
     IBOutlet UITextField * textFieldAmount;
-
 }
+- (IBAction)textFieldProfitEditingChanged:(id)sender;
+- (IBAction)textFieldBalanceEditingChanged:(id)sender;
+- (IBAction)textFieldAmountEditingChanged:(id)sender;
 
 
 @end
