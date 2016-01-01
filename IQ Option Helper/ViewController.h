@@ -24,6 +24,10 @@
 - (IBAction)textFieldAmountEditingChanged:(id)sender;
 - (IBAction)buttonLose:(id)sender;
 - (IBAction)buttonWin:(id)sender;
+- (IBAction)minBalance:(id)sender;
+- (IBAction)pluBalance:(id)sender;
+- (IBAction)minAmount:(id)sender;
+- (IBAction)pluAmount:(id)sender;
 
 
 

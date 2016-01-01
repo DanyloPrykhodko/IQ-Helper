@@ -21,7 +21,6 @@
 		CB3812D61C328E150016397C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CD1C328E150016397C /* Roboto-Light.ttf */; };
 		CB3812D81C328E150016397C /* WIN.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812CF1C328E150016397C /* WIN.png */; };
 		CB3812D91C328E150016397C /* IQOH.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812D01C328E150016397C /* IQOH.png */; };
-		CB3812DA1C328E150016397C /* IQOHPlan.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812D11C328E150016397C /* IQOHPlan.png */; };
 		CB3812E01C3292130016397C /* –.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DC1C3292130016397C /* –.png */; };
 		CB3812E11C3292130016397C /* IQOHIntro.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DD1C3292130016397C /* IQOHIntro.png */; };
 		CB3812E21C3292130016397C /* IQOHBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CB3812DE1C3292130016397C /* IQOHBack.png */; };
@@ -70,7 +69,6 @@
 		CB3812CD1C328E150016397C /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		CB3812CF1C328E150016397C /* WIN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WIN.png; sourceTree = "<group>"; };
 		CB3812D01C328E150016397C /* IQOH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOH.png; sourceTree = "<group>"; };
-		CB3812D11C328E150016397C /* IQOHPlan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHPlan.png; sourceTree = "<group>"; };
 		CB3812DC1C3292130016397C /* –.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "–.png"; sourceTree = "<group>"; };
 		CB3812DD1C3292130016397C /* IQOHIntro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHIntro.png; sourceTree = "<group>"; };
 		CB3812DE1C3292130016397C /* IQOHBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IQOHBack.png; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 				CB3812CF1C328E150016397C /* WIN.png */,
 				CB3812DC1C3292130016397C /* –.png */,
 				CB3812DF1C3292130016397C /* +.png */,
-				CB3812D11C328E150016397C /* IQOHPlan.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -299,7 +296,6 @@
 				CB3812E31C3292130016397C /* +.png in Resources */,
 				CB3812D31C328E150016397C /* Roboto-Bold.ttf in Resources */,
 				CB38129F1C328DF30016397C /* Main.storyboard in Resources */,
-				CB3812DA1C328E150016397C /* IQOHPlan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +547,7 @@
 				CB3812C31C328DF30016397C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB3812C41C328DF30016397C /* Build configuration list for PBXNativeTarget "IQ Option HelperTests" */ = {
 			isa = XCConfigurationList;
@@ -559,6 +556,7 @@
 				CB3812C61C328DF30016397C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB3812C71C328DF30016397C /* Build configuration list for PBXNativeTarget "IQ Option HelperUITests" */ = {
 			isa = XCConfigurationList;
@@ -567,6 +565,7 @@
 				CB3812C91C328DF30016397C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
