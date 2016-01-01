@@ -15,7 +15,7 @@
 @implementation ViewController
 
 @synthesize proTextFieldProfit, proTextFieldAmount, protextFieldBalance, proLabelProfit, proLabelAmount;
-
+//------------------------------------------------------------------------------
 #pragma mark Glodal Variables
 
 //Balance
@@ -36,7 +36,7 @@ double profitAmount = 0;
 
 //Support
 int Step = 1;
-
+//------------------------------------------------------------------------------
 #pragma mark ViewDid Load
 
 - (void)viewDidLoad {
@@ -60,6 +60,13 @@ int Step = 1;
     textFieldBalance.inputAccessoryView = numberToolbar;
     [self update];
     [textFieldProfit setFont:[UIFont fontWithName:@"Roboto-Light" size:94]];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textFieldProfit resignFirstResponder];
+    [textFieldBalance resignFirstResponder];
+    [textFieldAmount resignFirstResponder];
+    return YES;
 }
 
 -(void)cancelNumberPad{
@@ -93,7 +100,7 @@ int Step = 1;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//------------------------------------------------------------------------------
 #pragma mark LOSE/WIN
 
 - (IBAction)buttonLose:(id)sender {
@@ -119,7 +126,7 @@ int Step = 1;
     [self updateS];
     [self update];
 }
-
+//------------------------------------------------------------------------------
 #pragma mark -/+
 
 - (IBAction)minBalance:(id)sender {
@@ -146,26 +153,33 @@ int Step = 1;
     [self updateS];
 }
 
-#pragma mark TextFields
 
-// TextField Return
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textFieldProfit resignFirstResponder];
-    [textFieldBalance resignFirstResponder];
-    [textFieldAmount resignFirstResponder];
-    return YES;
+
+//------------------------------------------------------------------------------
+#pragma mark TextField Balance
+- (IBAction)textFieldBalanceEditingDidBegin:(id)sender {
+    Balance = firstBalance + secondBalance;
+    protextFieldBalance.text = [NSString stringWithFormat:@"%g", Balance];
 }
-
-//TextField Amount
 
 - (IBAction)textFieldBalanceEditingChanged:(id)sender {
-    protextFieldBalance.placeholder = protextFieldBalance.text;
-    [self update];
-    WinBalance = Balance;
+    //protextFieldBalance.placeholder = protextFieldBalance.text;
+    //WinBalance = Balance;
+    
+    
 }
 
-//TextField Amount
+- (IBAction)textFieldBalanceEditingEnd:(id)sender {
+    [self update];
+    firstBalance = round(Balance/100.f);
+    secondBalance = Balance - firstBalance;
+}
+//------------------------------------------------------------------------------
+#pragma mark TextField Amount
+
+- (IBAction)textFieldAmountEditingDidBegin:(id)sender {
+}
 
 - (IBAction)textFieldAmountEditingChanged:(id)sender {
     proTextFieldAmount.placeholder = proTextFieldAmount.text;
@@ -176,27 +190,25 @@ int Step = 1;
     proLabelAmount.text = [NSString stringWithFormat:@"$%g", Amount];
 }
 
-//TextField Profit
+- (IBAction)textFieldAmountEditingEnd:(id)sender {
+}
+//------------------------------------------------------------------------------
+#pragma mark Textfield Profit
 
 - (IBAction)textFieldProfitEditingChanged:(id)sender {
     proTextFieldProfit.placeholder = proTextFieldProfit.text;
     [self update];
 }
 
-//Limitation
-
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([self.proTextFieldProfit isFirstResponder]) {
         NSString *returnProfit = [textFieldProfit.text stringByReplacingCharactersInRange:range withString:string];
-        return [returnProfit length] <=2;
-    }else if ([self.protextFieldBalance isFirstResponder]){
-        return YES;
-    }else if ([self.proTextFieldAmount isFirstResponder]){
-        return YES;
-    } else
-        return YES;
+        return [returnProfit length] <=2;}
+    else if ([self.protextFieldBalance isFirstResponder]) return YES;
+    else if ([self.proTextFieldAmount isFirstResponder]) return YES;
+    else return YES;
 }
-
+//------------------------------------------------------------------------------
 #pragma mark Updates
 
 -(void)update{

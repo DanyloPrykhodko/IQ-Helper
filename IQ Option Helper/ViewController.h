@@ -18,18 +18,23 @@
     @property (weak, nonatomic) IBOutlet UITextField * proTextFieldAmount;
     @property (weak, nonatomic) IBOutlet UILabel *proLabelProfit;
     @property (weak, nonatomic) IBOutlet UILabel *proLabelAmount;
-
+//------------------------------------------------------------------------------
 - (IBAction)textFieldProfitEditingChanged:(id)sender;
+//------------------------------------------------------------------------------
+- (IBAction)textFieldBalanceEditingDidBegin:(id)sender;
 - (IBAction)textFieldBalanceEditingChanged:(id)sender;
+- (IBAction)textFieldBalanceEditingEnd:(id)sender;
+//------------------------------------------------------------------------------
+- (IBAction)textFieldAmountEditingDidBegin:(id)sender;
 - (IBAction)textFieldAmountEditingChanged:(id)sender;
+- (IBAction)textFieldAmountEditingEnd:(id)sender;
+//------------------------------------------------------------------------------
 - (IBAction)buttonLose:(id)sender;
 - (IBAction)buttonWin:(id)sender;
 - (IBAction)minBalance:(id)sender;
 - (IBAction)pluBalance:(id)sender;
 - (IBAction)minAmount:(id)sender;
 - (IBAction)pluAmount:(id)sender;
-
-
 
 @end
 

@@ -223,6 +223,9 @@
                                 </variation>
                                 <connections>
                                     <action selector="textFieldBalanceEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="jCo-8m-SQD"/>
+                                    <action selector="textFieldBalanceEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="fRe-CR-RRF"/>
+                                    <action selector="textFieldBalanceEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="r3n-fd-e1n"/>
+                                    <action selector="textFieldEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="mXX-H8-EgF"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10,00" placeholder="0.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-73-xB5">
@@ -247,7 +250,9 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="textFieldAmountEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="c3r-Bt-uHY"/>
+                                    <action selector="textFieldAmountEditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="EAb-RM-mp4"/>
+                                    <action selector="textFieldAmountEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="dVe-ye-Kzx"/>
+                                    <action selector="textFieldAmountEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DCx-8W-tHP"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19,90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-L0-Qrf">
