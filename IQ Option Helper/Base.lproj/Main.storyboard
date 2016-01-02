@@ -196,11 +196,12 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="textFieldBalanceEditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="OAD-h6-Em7"/>
+                                    <action selector="textFieldProfitEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="90V-Ob-NRJ"/>
                                     <action selector="textFieldProfitEditingChanged:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="MWr-eB-Qn7"/>
+                                    <action selector="textFieldProfitEditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fzo-Xs-IBA"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100,0" placeholder="0.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdI-VJ-xUE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="0" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gdI-VJ-xUE">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="HOn-XZ-GIp"/>
@@ -223,12 +224,11 @@
                                 </variation>
                                 <connections>
                                     <action selector="textFieldBalanceEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="jCo-8m-SQD"/>
-                                    <action selector="textFieldBalanceEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="fRe-CR-RRF"/>
-                                    <action selector="textFieldBalanceEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="r3n-fd-e1n"/>
-                                    <action selector="textFieldEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="mXX-H8-EgF"/>
+                                    <action selector="textFieldBalanceEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Fkt-9C-NBb"/>
+                                    <action selector="textFieldBalanceEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="qGq-3z-NiC"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10,00" placeholder="0.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-73-xB5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="0" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-73-xB5">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WQ6-2B-xgr"/>
@@ -250,12 +250,12 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="textFieldAmountEditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="EAb-RM-mp4"/>
+                                    <action selector="textFieldAmountEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="nVO-nA-QtJ"/>
                                     <action selector="textFieldAmountEditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="dVe-ye-Kzx"/>
-                                    <action selector="textFieldAmountEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DCx-8W-tHP"/>
+                                    <action selector="textFieldAmountEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="QpA-bW-F8o"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19,90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-L0-Qrf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-L0-Qrf">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="KuO-Zd-XY4">
@@ -281,7 +281,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxO-Av-yN7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxO-Av-yN7">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="167" id="JBY-g5-H9J"/>
@@ -445,6 +445,10 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="minAmount" destination="QzJ-3s-RLx" id="Gz4-yu-Y5p"/>
+                        <outlet property="minBalance" destination="uBu-vj-9NX" id="wdv-dM-QZr"/>
+                        <outlet property="pluAmount" destination="kxk-Ol-FNh" id="yv3-rk-kte"/>
+                        <outlet property="pluBalance" destination="RP9-XS-Mdj" id="gca-7o-8X5"/>
                         <outlet property="proLabelAmount" destination="vxO-Av-yN7" id="APK-YO-0dS"/>
                         <outlet property="proLabelProfit" destination="nYG-L0-Qrf" id="xxy-30-aLn"/>
                         <outlet property="proTextFieldAmount" destination="ssZ-73-xB5" id="jM2-eF-25k"/>

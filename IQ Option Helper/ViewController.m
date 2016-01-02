@@ -14,21 +14,17 @@
 
 @implementation ViewController
 
-@synthesize proTextFieldProfit, proTextFieldAmount, protextFieldBalance, proLabelProfit, proLabelAmount;
+@synthesize proTextFieldProfit, proTextFieldAmount, protextFieldBalance, proLabelProfit, proLabelAmount, minBalance, pluBalance, minAmount, pluAmount;
 //------------------------------------------------------------------------------
 #pragma mark Glodal Variables
 
 //Balance
 double WinBalance = 0;
 double Balance = 0;
-int firstBalance;
-int secondBalance;
 
 //Amount
-double StartAmount = 0;
+int StartAmount = 0;
 double Amount = 0;
-int firstAmount;
-int secondAmount;
 
 //Profit
 int Profit = 99;
@@ -44,10 +40,7 @@ int Step = 1;
     textFieldProfit.delegate = self;
     textFieldBalance.delegate = self;
     textFieldAmount.delegate = self;
-    [super viewDidLoad];
-    textFieldBalance.keyboardType = UIKeyboardTypeDecimalPad;
-    textFieldAmount.keyboardType = UIKeyboardTypeDecimalPad;
-    
+    [super viewDidLoad];    
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"\t Cancel \t" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNumberPad)],
@@ -58,7 +51,6 @@ int Step = 1;
     textFieldProfit.inputAccessoryView = numberToolbar;
     textFieldAmount.inputAccessoryView = numberToolbar;
     textFieldBalance.inputAccessoryView = numberToolbar;
-    [self update];
     [textFieldProfit setFont:[UIFont fontWithName:@"Roboto-Light" size:94]];
 }
 
@@ -74,10 +66,10 @@ int Step = 1;
         textFieldProfit.text = [NSString stringWithFormat: @"%d",Profit];
         [textFieldProfit resignFirstResponder];
     }else if ([self.proTextFieldAmount isFirstResponder]){
-        textFieldAmount.text = [NSString stringWithFormat: @"%g",Amount];
+        textFieldAmount.text = [NSString stringWithFormat: @"%g",Amount/100];
         [textFieldAmount resignFirstResponder];
     }else if ([self.protextFieldBalance isFirstResponder]){
-        textFieldBalance.text = [NSString stringWithFormat: @"%g",Balance];
+        textFieldBalance.text = [NSString stringWithFormat: @"%g",Balance/100];
         [textFieldBalance resignFirstResponder];
     }
 }
@@ -109,9 +101,14 @@ int Step = 1;
     Balance -= Amount;
     Amount = 100.0 * (((WinBalance-(StartAmount*(Step-1))) + (StartAmount*((Profit) / 100.0))*Step) - (Balance - StartAmount*(Step-1))) / Profit;
     profitAmount = Amount * ((100 + Profit) / 100.0);
-    proTextFieldAmount.textColor = [UIColor redColor];
-    [self updateS];
-    [self update];
+    [self Print];
+    proTextFieldProfit.enabled = false;
+    protextFieldBalance.enabled = false;
+    proTextFieldAmount.enabled = false;
+    minBalance.enabled = false;
+    pluBalance.enabled = false;
+    minAmount.enabled = false;
+    pluAmount.enabled = false;
 }
 
 - (IBAction)buttonWin:(id)sender {
@@ -122,82 +119,105 @@ int Step = 1;
     Amount = StartAmount;
     Step = 1;
     profitAmount = Amount * ((100 + Profit) / 100.0);
-    proTextFieldAmount.textColor = [UIColor whiteColor];
-    [self updateS];
-    [self update];
+    [self Print];
+    proTextFieldProfit.enabled = true;
+    protextFieldBalance.enabled = true;
+    proTextFieldAmount.enabled = true;
+    minBalance.enabled = true;
+    pluBalance.enabled = true;
+    minAmount.enabled = true;
+    pluAmount.enabled = true;
 }
 //------------------------------------------------------------------------------
 #pragma mark -/+
 
 - (IBAction)minBalance:(id)sender {
-    Balance--;
+    Balance-=100;
+    WinBalance = Balance;
     NSLog(@"- Balance");
-    [self updateS];
+    [self Print];
 }
 
 - (IBAction)pluBalance:(id)sender {
-    Balance++;
+    Balance+=100;
+    WinBalance = Balance;
     NSLog(@"+ Balance");
-    [self updateS];
+    [self Print];
 }
 
 - (IBAction)minAmount:(id)sender {
-    Amount--;
+    Amount-=100;
     NSLog(@"- Amount");
-    [self updateS];
+    StartAmount = Amount;
+    profitAmount = Amount * ((100 + Profit) / 100.0);
+    profitAmount = round(profitAmount);
+    proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
+    [self Print];
 }
 
 - (IBAction)pluAmount:(id)sender {
-    Amount++;
+    Amount+=100;
     NSLog(@"+ Amount");
-    [self updateS];
+    StartAmount = Amount;
+    profitAmount = Amount * ((100 + Profit) / 100.0);
+    profitAmount = round(profitAmount);
+    proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
+    [self Print];
 }
-
-
-
 
 //------------------------------------------------------------------------------
 #pragma mark TextField Balance
 - (IBAction)textFieldBalanceEditingDidBegin:(id)sender {
-    Balance = firstBalance + secondBalance;
-    protextFieldBalance.text = [NSString stringWithFormat:@"%g", Balance];
+    NSLog(@"textFieldBalanceEditingDidBegin");
+    //protextFieldBalance.text = [NSString stringWithFormat:@"%g", Balance];
 }
 
 - (IBAction)textFieldBalanceEditingChanged:(id)sender {
-    //protextFieldBalance.placeholder = protextFieldBalance.text;
-    //WinBalance = Balance;
-    
-    
+    NSLog(@"textFieldBalanceEditingChanged");
 }
 
 - (IBAction)textFieldBalanceEditingEnd:(id)sender {
-    [self update];
-    firstBalance = round(Balance/100.f);
-    secondBalance = Balance - firstBalance;
+    NSLog(@"textFieldBalanceEditingEnd");
+    Balance = [textFieldBalance.text doubleValue];
+    WinBalance = Balance;
+    [self Print];
+    protextFieldBalance.placeholder = protextFieldBalance.text;
 }
 //------------------------------------------------------------------------------
 #pragma mark TextField Amount
 
 - (IBAction)textFieldAmountEditingDidBegin:(id)sender {
+    NSLog(@"textFieldAmountEditingDidBegin");
+    //proTextFieldAmount.text = [NSString stringWithFormat:@"%g", Amount];
 }
 
 - (IBAction)textFieldAmountEditingChanged:(id)sender {
-    proTextFieldAmount.placeholder = proTextFieldAmount.text;
-    [self update];
-    StartAmount = [textFieldAmount.text doubleValue];
-    profitAmount = Amount * ((100 + Profit) / 100.0);
-    proLabelProfit.text = [NSString stringWithFormat:@"%g", profitAmount];
-    proLabelAmount.text = [NSString stringWithFormat:@"$%g", Amount];
+    
+    NSLog(@"textFieldAmountEditingChanged");
 }
 
 - (IBAction)textFieldAmountEditingEnd:(id)sender {
+    NSLog(@"textFieldAmountEditingEnd");
+    Amount = [textFieldAmount.text doubleValue];
+    StartAmount = Amount;
+    proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
+    profitAmount = Amount * ((100 + Profit) / 100.0);
+    profitAmount = round(profitAmount);
+    [self Print];
+    proTextFieldAmount.placeholder = proTextFieldAmount.text;
 }
 //------------------------------------------------------------------------------
 #pragma mark Textfield Profit
 
 - (IBAction)textFieldProfitEditingChanged:(id)sender {
     proTextFieldProfit.placeholder = proTextFieldProfit.text;
-    [self update];
+    Profit = [textFieldProfit.text intValue];
+}
+
+- (IBAction)textFieldProfitEditingDidEnd:(id)sender {
+    profitAmount = Amount * ((100 + Profit) / 100.0);
+    profitAmount = round(profitAmount);
+    [self Print];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -209,19 +229,12 @@ int Step = 1;
     else return YES;
 }
 //------------------------------------------------------------------------------
-#pragma mark Updates
+#pragma mark Print
 
--(void)update{
-    Balance = [textFieldBalance.text doubleValue];
-    Amount = [textFieldAmount.text doubleValue];
-    Profit = [textFieldProfit.text intValue];
-}
-
--(void)updateS{
-    proLabelProfit.text = [NSString stringWithFormat:@"%g", profitAmount];
-    proLabelAmount.text = [NSString stringWithFormat:@"$%g", Amount];
-    proTextFieldAmount.text = [NSString stringWithFormat:@"%g", Amount];
-    protextFieldBalance.text = [NSString stringWithFormat:@"%g", Balance];
+-(void)Print{
+    proLabelProfit.text = [NSString stringWithFormat:@"%g", round(profitAmount)/100];
+    proLabelAmount.text = [NSString stringWithFormat:@"$%g", round(Amount)/100];
+    protextFieldBalance.text = [NSString stringWithFormat:@"%g", round(Balance)/100];
 }
 
 @end
