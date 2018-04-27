@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController <UITextFieldDelegate>{
     IBOutlet UITextField * textFieldProfit;
     IBOutlet UITextField * textFieldBalance;
     IBOutlet UITextField * textFieldAmount;
 }
 
+
     @property (weak, nonatomic) IBOutlet UITextField * proTextFieldProfit;
-    @property (weak, nonatomic) IBOutlet UITextField * protextFieldBalance;
+    @property (weak, nonatomic) IBOutlet UITextField * proTextFieldBalance;
     @property (weak, nonatomic) IBOutlet UITextField * proTextFieldAmount;
 
     @property (weak, nonatomic) IBOutlet UILabel *proLabelProfit;
@@ -25,6 +26,9 @@
     @property (weak, nonatomic) IBOutlet UIButton *pluBalance;
     @property (weak, nonatomic) IBOutlet UIButton *minAmount;
     @property (weak, nonatomic) IBOutlet UIButton *pluAmount;
+
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutConstraintAmount;
+    @property (weak, nonatomic) IBOutlet UILabel *labelLastAmount;
 
 
 - (IBAction)textFieldProfitEditingChanged:(id)sender;
@@ -37,7 +41,6 @@
 - (IBAction)textFieldAmountEditingDidBegin:(id)sender;
 - (IBAction)textFieldAmountEditingChanged:(id)sender;
 - (IBAction)textFieldAmountEditingEnd:(id)sender;
-
 
 - (IBAction)buttonLose:(id)sender;
 - (IBAction)buttonWin:(id)sender;

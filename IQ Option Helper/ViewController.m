@@ -12,18 +12,19 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController;
 
-@synthesize proTextFieldProfit, proTextFieldAmount, protextFieldBalance, proLabelProfit, proLabelAmount, minBalance, pluBalance, minAmount, pluAmount;
+@synthesize proTextFieldProfit, proTextFieldAmount, proTextFieldBalance, proLabelProfit, proLabelAmount, minBalance, pluBalance, minAmount, pluAmount, layoutConstraintAmount, labelLastAmount;
+
 //------------------------------------------------------------------------------
 #pragma mark Glodal Variables
 
 //Balance
-double WinBalance = 0;
+double winBalance = 0;
 double Balance = 0;
 
 //Amount
-int StartAmount = 0;
+double startAmount = 0;
 double Amount = 0;
 
 //Profit
@@ -32,6 +33,7 @@ double profitAmount = 0;
 
 //Support
 int Step = 1;
+
 //------------------------------------------------------------------------------
 #pragma mark ViewDid Load
 
@@ -40,48 +42,32 @@ int Step = 1;
     textFieldProfit.delegate = self;
     textFieldBalance.delegate = self;
     textFieldAmount.delegate = self;
-    [super viewDidLoad];    
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"\t Cancel \t" style:UIBarButtonItemStylePlain target:self action:@selector(cancelNumberPad)],
-                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                            [[UIBarButtonItem alloc]initWithTitle:@"\t  Done    \t" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
-    [numberToolbar sizeToFit];
     
-    textFieldProfit.inputAccessoryView = numberToolbar;
-    textFieldAmount.inputAccessoryView = numberToolbar;
-    textFieldBalance.inputAccessoryView = numberToolbar;
+    [super viewDidLoad];
+    
+    UITextField *balanceTextField = (UITextField*)textFieldBalance;
+    UITextField *amountTextField = (UITextField*)textFieldAmount;
+    UITextField *profitTextField = (UITextField*)textFieldProfit;
+    
+    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithTitle:@" Done\t\t" style:UIBarButtonItemStyleDone target:self action:@selector(doneButton)];
+    UIToolbar *tipToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 414, 233)];
+    tipToolbar.barStyle = UIBarStyleBlack;
+    tipToolbar.items = [NSArray arrayWithObjects:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil];
+    [tipToolbar sizeToFit];
+    
+    balanceTextField.inputAccessoryView = tipToolbar;
+    amountTextField.inputAccessoryView = tipToolbar;
+    profitTextField.inputAccessoryView = tipToolbar;
+    
     [textFieldProfit setFont:[UIFont fontWithName:@"Roboto-Light" size:94]];
+    [labelLastAmount setFont:[UIFont fontWithName:@"Roboto-Light" size:17]];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textFieldProfit resignFirstResponder];
+-(void)doneButton{
+    NSLog(@"Done Button");
     [textFieldBalance resignFirstResponder];
     [textFieldAmount resignFirstResponder];
-    return YES;
-}
-
--(void)cancelNumberPad{
-    if ([self.proTextFieldProfit isFirstResponder]) {
-        textFieldProfit.text = [NSString stringWithFormat: @"%d",Profit];
-        [textFieldProfit resignFirstResponder];
-    }else if ([self.proTextFieldAmount isFirstResponder]){
-        textFieldAmount.text = [NSString stringWithFormat: @"%g",Amount/100];
-        [textFieldAmount resignFirstResponder];
-    }else if ([self.protextFieldBalance isFirstResponder]){
-        textFieldBalance.text = [NSString stringWithFormat: @"%g",Balance/100];
-        [textFieldBalance resignFirstResponder];
-    }
-}
-
--(void)doneWithNumberPad{
-    if ([self.proTextFieldProfit isFirstResponder]) {
-        [textFieldProfit resignFirstResponder];
-    }else if ([self.proTextFieldAmount isFirstResponder]){
-        [textFieldAmount resignFirstResponder];
-    }else if ([self.protextFieldBalance isFirstResponder]){
-        [textFieldBalance resignFirstResponder];
-    }
+    [textFieldProfit resignFirstResponder];
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
@@ -92,84 +78,125 @@ int Step = 1;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 //------------------------------------------------------------------------------
 #pragma mark LOSE/WIN
 
 - (IBAction)buttonLose:(id)sender {
-    NSLog(@"LOSE");
-    Step++;
-    Balance -= Amount;
-    Amount = 100.0 * (((WinBalance-(StartAmount*(Step-1))) + (StartAmount*((Profit) / 100.0))*Step) - (Balance - StartAmount*(Step-1))) / Profit;
-    profitAmount = Amount * ((100 + Profit) / 100.0);
-    [self Print];
-    proTextFieldProfit.enabled = false;
-    protextFieldBalance.enabled = false;
-    proTextFieldAmount.enabled = false;
-    minBalance.enabled = false;
-    pluBalance.enabled = false;
-    minAmount.enabled = false;
-    pluAmount.enabled = false;
+    NSLog(@"Lose Button");
+    if (Amount<=Balance&&Amount>=100&&Balance>=100) {
+        Step++;
+        Balance -= Amount;
+        Amount = 100.0 * (((winBalance - (startAmount * (Step - 1))) + (startAmount * ((Profit) / 100.0)) /** Step*/) - (Balance - startAmount * (Step - 1))) / Profit;
+        [self ss];
+        profitAmount = Amount * ((100 + Profit) / 100.0);
+        [self Print];
+        proTextFieldProfit.enabled = false;
+        proTextFieldBalance.enabled = false;
+        proTextFieldAmount.enabled = false;
+        minBalance.enabled = false;
+        pluBalance.enabled = false;
+        minAmount.enabled = false;
+        pluAmount.enabled = false;
+        if (Balance < 100){
+            winBalance = 0;
+            Balance = 0;
+            startAmount = 0;
+            Amount = 0;
+            Profit = 99;
+            profitAmount = 0;
+            Step = 1;
+            [self Print];
+            UIAlertController* zero = [UIAlertController alertControllerWithTitle:@"Balance is empty" message:@"Balance is more low than the minimum deposit" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* def = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            proTextFieldProfit.enabled = true;
+            proTextFieldBalance.enabled = true;
+            proTextFieldAmount.enabled = true;
+            minBalance.enabled = true;
+            pluBalance.enabled = true;
+            minAmount.enabled = true;
+            pluAmount.enabled = true;
+            layoutConstraintAmount.constant = 183;
+            labelLastAmount.alpha = 0;
+            [zero addAction:def];
+            [self presentViewController:zero animated:YES completion:nil];
+            textFieldBalance.text = 0;
+            textFieldAmount.text = 0;
+            proTextFieldAmount.placeholder = [NSString stringWithFormat:@"%g", Amount];
+            proTextFieldBalance.placeholder = [NSString stringWithFormat:@"%g", Balance];
+        }
+    }
 }
 
 - (IBAction)buttonWin:(id)sender {
-    NSLog(@"WIN");
-    Balance -= Amount;
-    Balance += Amount*((100 + Profit)/100.0);
-    WinBalance = Balance;
-    Amount = StartAmount;
-    Step = 1;
-    profitAmount = Amount * ((100 + Profit) / 100.0);
-    [self Print];
-    proTextFieldProfit.enabled = true;
-    protextFieldBalance.enabled = true;
-    proTextFieldAmount.enabled = true;
-    minBalance.enabled = true;
-    pluBalance.enabled = true;
-    minAmount.enabled = true;
-    pluAmount.enabled = true;
+    NSLog(@"Win Button");
+    if (Amount<=Balance&&Amount>=100&&Balance>=100) {
+        layoutConstraintAmount.constant = 183;
+        labelLastAmount.alpha = 0;
+        Balance -= Amount;
+        Balance += Amount*((100 + Profit)/100.0);
+        winBalance = Balance;
+        Amount = startAmount;
+        Step = 1;
+        profitAmount = Amount * ((100 + Profit) / 100.0);
+        [self Print];
+        proTextFieldProfit.enabled = true;
+        proTextFieldBalance.enabled = true;
+        proTextFieldAmount.enabled = true;
+        minBalance.enabled = true;
+        pluBalance.enabled = true;
+        minAmount.enabled = true;
+        pluAmount.enabled = true;
+    }
 }
 //------------------------------------------------------------------------------
 #pragma mark -/+
 
 - (IBAction)minBalance:(id)sender {
-    Balance-=100;
-    WinBalance = Balance;
-    NSLog(@"- Balance");
+    if (Balance>100) Balance-=100;
+    if (Balance<=100) Balance=0;
+    winBalance = Balance;
+    proTextFieldBalance.placeholder = proTextFieldBalance.text;
+    NSLog(@"Balance -1");
     [self Print];
 }
 
 - (IBAction)pluBalance:(id)sender {
     Balance+=100;
-    WinBalance = Balance;
-    NSLog(@"+ Balance");
+    winBalance = Balance;
+    proTextFieldBalance.placeholder = proTextFieldBalance.text;
+    NSLog(@"Balance +1");
     [self Print];
 }
 
 - (IBAction)minAmount:(id)sender {
-    Amount-=100;
-    NSLog(@"- Amount");
-    StartAmount = Amount;
+    if (Amount>100) Amount-=100;
+    if (Amount<=100) Amount=0;
+    startAmount = Amount;
     profitAmount = Amount * ((100 + Profit) / 100.0);
     profitAmount = round(profitAmount);
     proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
+    proTextFieldAmount.placeholder = proTextFieldAmount.text;
+    NSLog(@"Amount -1");
     [self Print];
 }
 
 - (IBAction)pluAmount:(id)sender {
     Amount+=100;
-    NSLog(@"+ Amount");
-    StartAmount = Amount;
+    startAmount = Amount;
     profitAmount = Amount * ((100 + Profit) / 100.0);
     profitAmount = round(profitAmount);
     proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
+    proTextFieldAmount.placeholder = proTextFieldAmount.text;
+    NSLog(@"Amount +1");
     [self Print];
 }
 
 //------------------------------------------------------------------------------
 #pragma mark TextField Balance
+
 - (IBAction)textFieldBalanceEditingDidBegin:(id)sender {
     NSLog(@"textFieldBalanceEditingDidBegin");
-    //protextFieldBalance.text = [NSString stringWithFormat:@"%g", Balance];
 }
 
 - (IBAction)textFieldBalanceEditingChanged:(id)sender {
@@ -177,46 +204,48 @@ int Step = 1;
 }
 
 - (IBAction)textFieldBalanceEditingEnd:(id)sender {
+    Balance = [textFieldBalance.text doubleValue]*100;
+    winBalance = Balance;
+    proTextFieldBalance.placeholder = proTextFieldBalance.text;
     NSLog(@"textFieldBalanceEditingEnd");
-    Balance = [textFieldBalance.text doubleValue];
-    WinBalance = Balance;
     [self Print];
-    protextFieldBalance.placeholder = protextFieldBalance.text;
 }
+
 //------------------------------------------------------------------------------
 #pragma mark TextField Amount
 
 - (IBAction)textFieldAmountEditingDidBegin:(id)sender {
     NSLog(@"textFieldAmountEditingDidBegin");
-    //proTextFieldAmount.text = [NSString stringWithFormat:@"%g", Amount];
 }
 
 - (IBAction)textFieldAmountEditingChanged:(id)sender {
-    
     NSLog(@"textFieldAmountEditingChanged");
 }
 
 - (IBAction)textFieldAmountEditingEnd:(id)sender {
-    NSLog(@"textFieldAmountEditingEnd");
-    Amount = [textFieldAmount.text doubleValue];
-    StartAmount = Amount;
+    Amount = [textFieldAmount.text doubleValue]*100;
+    startAmount = Amount;
     proTextFieldAmount.text = [NSString stringWithFormat:@"%g", round(Amount)/100];
     profitAmount = Amount * ((100 + Profit) / 100.0);
     profitAmount = round(profitAmount);
-    [self Print];
     proTextFieldAmount.placeholder = proTextFieldAmount.text;
+    NSLog(@"textFieldAmountEditingEnd");
+    [self Print];
 }
+
 //------------------------------------------------------------------------------
 #pragma mark Textfield Profit
 
 - (IBAction)textFieldProfitEditingChanged:(id)sender {
     proTextFieldProfit.placeholder = proTextFieldProfit.text;
     Profit = [textFieldProfit.text intValue];
+    NSLog(@"textFieldProfitEditingChanged");
 }
 
 - (IBAction)textFieldProfitEditingDidEnd:(id)sender {
     profitAmount = Amount * ((100 + Profit) / 100.0);
     profitAmount = round(profitAmount);
+    NSLog(@"textFieldProfitEditingEnd");
     [self Print];
 }
 
@@ -224,17 +253,31 @@ int Step = 1;
     if ([self.proTextFieldProfit isFirstResponder]) {
         NSString *returnProfit = [textFieldProfit.text stringByReplacingCharactersInRange:range withString:string];
         return [returnProfit length] <=2;}
-    else if ([self.protextFieldBalance isFirstResponder]) return YES;
+    else if ([self.proTextFieldBalance isFirstResponder]) return YES;
     else if ([self.proTextFieldAmount isFirstResponder]) return YES;
     else return YES;
 }
+
 //------------------------------------------------------------------------------
 #pragma mark Print
 
 -(void)Print{
-    proLabelProfit.text = [NSString stringWithFormat:@"%g", round(profitAmount)/100];
+    NSLog(@"Print");
+    proLabelProfit.text = [NSString stringWithFormat:@"$%g", round(profitAmount)/100];
     proLabelAmount.text = [NSString stringWithFormat:@"$%g", round(Amount)/100];
-    protextFieldBalance.text = [NSString stringWithFormat:@"%g", round(Balance)/100];
+    proTextFieldBalance.text = [NSString stringWithFormat:@"%g", round(Balance)/100];
+}
+
+-(void)ss{
+    NSLog(@"SS");
+    if (Balance<Amount) {
+        layoutConstraintAmount.constant = 165;
+        labelLastAmount.alpha = 1;
+        int outAmount = Amount;
+        Amount = Balance;
+        double winBack = round((Amount*(100+Profit)/100)/(outAmount*(100+Profit)/100)*100);
+        labelLastAmount.text = [NSString stringWithFormat:@"Win back %g%%",winBack];
+    }
 }
 
 @end

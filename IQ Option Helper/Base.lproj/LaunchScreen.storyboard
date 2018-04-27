@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -20,12 +25,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IQOHIntro.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Vj-6x-f1P">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© DrPrykhodko" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCt-zm-21G">
+                                <rect key="frame" x="157" y="715" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9LM-Wo-EHC"/>
+                                    <constraint firstAttribute="height" constant="21" id="RQh-mw-O0h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="11"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NCt-zm-21G" firstAttribute="top" secondItem="0Vj-6x-f1P" secondAttribute="bottom" constant="-21" id="3bR-Oz-fhu"/>
                             <constraint firstItem="0Vj-6x-f1P" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Brx-oW-cUD"/>
                             <constraint firstItem="0Vj-6x-f1P" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="O3s-UH-qUc"/>
                             <constraint firstItem="0Vj-6x-f1P" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="Wev-99-Dq8"/>
+                            <constraint firstItem="NCt-zm-21G" firstAttribute="centerX" secondItem="0Vj-6x-f1P" secondAttribute="centerX" id="lXq-Na-mq2"/>
                             <constraint firstItem="0Vj-6x-f1P" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="xha-Qc-7F0"/>
                         </constraints>
                     </view>
